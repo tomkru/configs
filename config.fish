@@ -1,1 +1,0 @@
-set -Ux LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
