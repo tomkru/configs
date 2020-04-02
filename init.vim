@@ -3,12 +3,9 @@
 call plug#begin('~/.local/share/nvim/plugged')
 " Configuration for vim-plug
 Plug 'elzr/vim-json'
-Plug 'docker/docker'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
-Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/grep.vim'
-Plug 'morhetz/gruvbox'
 Plug 'derekwyatt/vim-scala'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
@@ -25,14 +22,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sensible'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'junegunn/goyo.vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'rizzatti/dash.vim'
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-obsession'
-Plug 'majutsushi/tagbar'
 Plug 'jalvesaq/Nvim-R'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " Configuration for vim-scala
@@ -51,14 +46,11 @@ nnoremap <C-p>l :BLines<CR>
 nnoremap <C-p>g :Rg<CR>
 
 " remove search highlight when pressing esc
-nnoremap <esc> :noh<CR><esc> 
+nnoremap <esc> :noh<CR><esc>
 
 " airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
-let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''🐵'', ''🙈'')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
 
 set t_Co=256
 set number " line numbers
@@ -68,7 +60,7 @@ filetype plugin indent on
 let g:NERDTreeWinSize = 50
 
 " startify
-let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, {'d': '~/Documents'} ]
+let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, {'p': '~/Documents/Projects'}, {'d': '~/Documents'} ]
 
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
@@ -91,7 +83,6 @@ set expandtab
 set shiftwidth=4
 au Filetype xml setlocal shiftwidth=2
 au Filetype scala setlocal shiftwidth=2
-colorscheme gruvbox
 
 function! SaveIfUnsaved()
     if &modified
@@ -147,12 +138,8 @@ let g:tagbar_type_markdown = {
     \ }
 nmap <F8> :TagbarToggle<CR>
 
-" Dash
-:nmap <silent> <leader>d <Plug>DashSearch
-
 " Comment Highlight
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
 
 " Configuration for coc.nvim
 set hidden
@@ -162,7 +149,7 @@ set nobackup
 set nowritebackup
 
 " Better display for messages
-set cmdheight=2
+set cmdheight=1
 
 " You will have a bad experience with diagnostic messages with the default 4000.
 set updatetime=300
@@ -205,7 +192,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Used to expand decorations in worksheets
-nmap <Leader>ws <Plug>(coc-metals-expand-decoration)
+nmap <Leader>we <Plug>(coc-metals-expand-decoration)
 
 " Use K to either doHover or show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -284,4 +271,11 @@ nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
 nnoremap <silent> <space>tc :<C-u>CocCommand metals.tvp metalsCompile<CR>
 " Reveal current current class (trait or object) in Tree View 'metalsBuild'
 nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsBuild<CR>
+
+" Autocomplete popup color
+:highlight Pmenu ctermbg=DarkGrey guibg=grey
+:highlight CocHighlightText ctermbg=DarkGrey
+
+" vimwiki prerequisites
+set nocompatible
 
