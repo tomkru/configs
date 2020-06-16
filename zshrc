@@ -68,7 +68,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sbt scala zsh-syntax-highlighting ssh-agent)
+plugins=(git sbt scala zsh-syntax-highlighting ssh-agent )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,10 +97,31 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias nv=nvim
 alias nvi=nvim
 alias vim=nvim
 alias view="nvim +\"set readonly\""
+alias projects="cd ~/Documents/Projects/"
+alias ps="cd ~/Documents/Projects/"
+alias ol="cd ~/Documents/Projects/orderlord"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tomaskruty/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tomaskruty/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tomaskruty/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tomaskruty/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/bin:$PATH
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

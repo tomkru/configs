@@ -28,6 +28,7 @@ Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-obsession'
 Plug 'jalvesaq/Nvim-R'
 Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-rails'
 call plug#end()
 
 " Configuration for vim-scala
